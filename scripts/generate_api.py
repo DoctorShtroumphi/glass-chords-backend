@@ -27,19 +27,11 @@ lesser_trained_model_15.load_state_dict(torch.load('./trained_models/model_epoch
 model_no_key_aware = ChordGenLSTM(vocab_size).to('cpu')
 model_no_key_aware.load_state_dict(torch.load('./trained_models/model_no_key.pth', map_location=torch.device('cpu')))
 
-lesser_trained_model_5_no_key = ChordGenLSTM(vocab_size).to('cpu')
-lesser_trained_model_5_no_key.load_state_dict(torch.load('./trained_models/model_no_key_epoch_5.pth', map_location=torch.device('cpu')))
-
-lesser_trained_model_15_no_key = ChordGenLSTM(vocab_size).to('cpu')
-lesser_trained_model_15_no_key.load_state_dict(torch.load('./trained_models/model_no_key_epoch_15.pth', map_location=torch.device('cpu')))
-
 # Set models to evaluation mode
 normal_model.eval()
 lesser_trained_model_5.eval()
 lesser_trained_model_15.eval()
 model_no_key_aware.eval()
-lesser_trained_model_5_no_key.eval()
-lesser_trained_model_15_no_key.eval()
 
 def generate_chords(model, key, chords, temperature=1.0):
     """Generate chords using the specified model and parameters."""
@@ -86,9 +78,9 @@ def generate_chords_route():
         if model_type == 'normal':
             model = model_no_key_aware
         elif model_type == 'least_trained':
-            model = lesser_trained_model_5_no_key
+            model = model_no_key_aware
         elif model_type == 'mid_trained':
-            model = lesser_trained_model_15_no_key
+            model = model_no_key_aware
         else:
             return jsonify({"error": f"Invalid 'model_type': {model_type}"}), 400
     
