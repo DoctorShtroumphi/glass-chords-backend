@@ -16,16 +16,16 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 vocab_size = max(dict_key_to_token.values()) + 1
 
 normal_model = ChordGenLSTM(vocab_size).to('cpu')
-normal_model.load_state_dict(torch.load('./trained_models/model.pth', map_location=torch.device('cpu')))
+normal_model.load_state_dict(torch.load('./model-code/scripts/trained_models/model.pth', map_location=torch.device('cpu')))
 
 lesser_trained_model_5 = ChordGenLSTM(vocab_size).to('cpu')
-lesser_trained_model_5.load_state_dict(torch.load('./trained_models/model_epoch_5.pth', map_location=torch.device('cpu')))
+lesser_trained_model_5.load_state_dict(torch.load('./model-code/scripts/trained_models/model_epoch_5.pth', map_location=torch.device('cpu')))
 
 lesser_trained_model_15 = ChordGenLSTM(vocab_size).to('cpu')
-lesser_trained_model_15.load_state_dict(torch.load('./trained_models/model_epoch_15.pth', map_location=torch.device('cpu')))
+lesser_trained_model_15.load_state_dict(torch.load('./model-code/scripts/trained_models/model_epoch_15.pth', map_location=torch.device('cpu')))
 
 model_no_key_aware = ChordGenLSTM(vocab_size).to('cpu')
-model_no_key_aware.load_state_dict(torch.load('./trained_models/model_no_key.pth', map_location=torch.device('cpu')))
+model_no_key_aware.load_state_dict(torch.load('./model-code/scripts/trained_models/model_no_key.pth', map_location=torch.device('cpu')))
 
 # Set models to evaluation mode
 normal_model.eval()
