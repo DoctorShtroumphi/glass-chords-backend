@@ -1,1 +1,1 @@
-web: python generate_api.py
+web: gunicorn generate_api:app
