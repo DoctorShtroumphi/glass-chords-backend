@@ -1,0 +1,1 @@
+web: python ./scripts/generate_api.py
