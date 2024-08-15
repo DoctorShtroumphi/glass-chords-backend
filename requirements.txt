@@ -8,4 +8,6 @@ Jinja2==3.1.4
 MarkupSafe==2.1.5
 packaging==24.1
 Werkzeug==3.0.3
-http://download.pytorch.org/whl/cpu/torch-2.0.1-cp39-cp39-manylinux2014_aarch64.whl
+--index-url https://download.pytorch.org/whl/cpu
+--extra-index-url https://pypi.org/simple
+torch==2.2.1
