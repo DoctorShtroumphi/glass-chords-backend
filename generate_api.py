@@ -1,14 +1,10 @@
 import logging
 import torch
 
-from preprocess.dictionaries import dict_chord_to_midi_pitches, dict_chord_to_token, dict_key_to_token, dict_key_to_notes
+from scripts.preprocess.dictionaries import dict_chord_to_midi_pitches, dict_chord_to_token, dict_key_to_token, dict_key_to_notes
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from model import ChordGenLSTM
-
-import os 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-print(dir_path)
+from scripts.model import ChordGenLSTM
 
 app = Flask(__name__)
 CORS(app)
@@ -49,6 +45,10 @@ def generate_chords(model, key, chords, temperature=1.0):
         probabilities = torch.softmax(logits, dim=-1)
         generated_chords = torch.multinomial(probabilities, num_samples=1).squeeze().tolist()
     return generated_chords
+
+@app.route("/")
+def index():
+    return "Welcome to the GlassChords API!"
 
 @app.route('/generate_chords', methods=['POST'])
 def generate_chords_route():

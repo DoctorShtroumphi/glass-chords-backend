@@ -1,1 +1,1 @@
-web: python ./scripts/generate_api.py
+web: python generate_api.py
