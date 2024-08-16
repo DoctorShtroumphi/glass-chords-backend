@@ -61,7 +61,7 @@ def generate_chords_route():
     key_aware_loss_enabled = data.get('key_aware_loss_enabled')
 
     # Log the input parameters
-    logging.info(f"Model Type: {model_type}, Temperature: {temperature}, Key Aware Enabled: {key_aware_loss_enabled}")
+    logging.info(f"Model Type: {model_type}, Temperature: {temperature}, Key-Aware Enabled: {key_aware_loss_enabled}")
     logging.info(f"Input - Key: {key}, Chords: {chords}")
 
     # Input validation
